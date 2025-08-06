@@ -6,7 +6,7 @@
   <title>Support — Shock Diamonds</title>
   <meta name="description" content="Support page for Shock Diamonds — a 3D educational app that visualizes compressible gas flow and Mach diamonds." />
   <meta name="robots" content="index,follow" />
-  <meta name="author" content="Qalti" />
+  <meta name="author" content="Viacheslav Gilevich" />
   <meta name="theme-color" content="#0f172a" />
   <meta property="og:title" content="Support — Shock Diamonds" />
   <meta property="og:description" content="Get help with Shock Diamonds: FAQs, troubleshooting, and contact support." />
@@ -43,13 +43,6 @@
     }
     header h1 { margin: 0; font-size: clamp(28px, 4vw, 40px); letter-spacing: .2px; }
     header p { margin: 0; color: var(--muted); font-size: 15px; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 12px; padding: 6px 10px; border-radius: 999px;
-      background: rgba(34,197,94,.12); color: var(--text);
-      border: 1px solid rgba(34,197,94,.25);
-      margin-top: 8px;
-    }
     nav {
       display: flex; flex-wrap: wrap; gap: 10px;
       margin: 12px 0 24px;
@@ -86,14 +79,12 @@
 <body>
   <div class="container" role="main">
     <header aria-labelledby="title">
-      <div class="badge" aria-label="Educational only">Educational use only</div>
       <h1 id="title">Shock Diamonds — Support</h1>
       <p>A 3D educational app that visualizes compressible gas flow and the formation of Mach diamonds. This page provides help, FAQs, and ways to contact support.</p>
       <nav aria-label="Sections">
         <a href="#contact">Contact</a>
         <a href="#faq">FAQs</a>
         <a href="#troubleshooting">Troubleshooting</a>
-        <a href="#models">Custom 3D Models</a>
         <a href="#privacy">Privacy</a>
         <a href="#about">About &amp; Versions</a>
         <a href="#legal">Legal</a>
@@ -103,13 +94,12 @@
     <section id="contact" aria-labelledby="contact-h">
       <h2 id="contact-h">Contact support</h2>
       <p>Need help? Email us and include details below so we can assist quickly.</p>
-      <p>
-        <strong>Email:</strong>
+      <p><strong>Email:</strong>
         <a href="mailto:gilevich@qalti.com?subject=Shock%20Diamonds%20Support" rel="noopener">gilevich@qalti.com</a>
       </p>
       <ul class="list-tight">
         <li>App version (see <a href="#about">About &amp; Versions</a>)</li>
-        <li>Device model (e.g., iPhone 14 Pro), iOS/iPadOS version</li>
+        <li>Device model (e.g., iPhone 14 Pro), iOS/iPadOS/macOS version</li>
         <li>What you were doing and steps to reproduce</li>
         <li>Any screenshots or screen recordings that show the issue</li>
       </ul>
@@ -131,7 +121,7 @@
         </div>
         <div>
           <h3>Can I add my own 3D model?</h3>
-          <p>Yes. You can import a custom 3D model to place into the flame visualization. See <a href="#models">Custom 3D Models</a> for tips.</p>
+          <p>Yes. You can import a custom 3D model. We fully support <strong>USDZ</strong>; other formats may work, but USDZ provides the most reliable results.</p>
         </div>
         <div>
           <h3>Do you offer refunds or manage subscriptions here?</h3>
@@ -142,77 +132,64 @@
 
     <section id="troubleshooting" aria-labelledby="troubleshoot-h">
       <h2 id="troubleshoot-h">Troubleshooting</h2>
+
       <h3>Performance feels slow or device gets warm</h3>
+      <p>Shock Diamonds runs a real-time 3D compressible-gas simulation and rendering pipeline. This is computationally intensive and can tax mobile GPUs/CPUs, which may reduce frame rate or generate noticeable heat.</p>
       <ul class="list-tight">
+        <li>If your device becomes too warm, <strong>close the app</strong> and allow it to cool before continuing.</li>
         <li>Close other apps to free memory and GPU.</li>
-        <li>Reduce simulation detail or particle counts in settings, if available.</li>
         <li>Ensure Low Power Mode is off for best performance.</li>
         <li>Restart the device if it’s been a while since the last reboot.</li>
       </ul>
 
       <h3>The app crashes or freezes</h3>
       <ul class="list-tight">
-        <li>Update to the latest version of Shock Diamonds and iOS/iPadOS.</li>
+        <li>Update to the latest version of Shock Diamonds and iOS/iPadOS/macOS.</li>
         <li>Try a device restart. If it persists, email us with steps to reproduce.</li>
       </ul>
 
-      <h3>My model imports but looks too big/small or is misplaced</h3>
+      <h3>The simulation becomes unstable</h3>
       <ul class="list-tight">
-        <li>Check your model’s scale units in your 3D tool (meters vs. centimeters).</li>
-        <li>Reset the model’s transforms (apply scale/rotation) before exporting.</li>
-        <li>Center the model near the origin (0,0,0) before export.</li>
+        <li>Lower the <strong>Mach speed</strong> or the <strong>pressure ratio</strong> and try again.</li>
+        <li>Extremely aggressive settings can push the simulation outside stable ranges.</li>
       </ul>
 
-      <h3>Import fails</h3>
+      <h3>Model import fails or looks incorrect</h3>
       <ul class="list-tight">
-        <li>Confirm the format is supported by the current app version (see in-app import screen).</li>
-        <li>Try re-exporting with embedded textures/materials.</li>
-        <li>Use a simpler mesh (fewer polygons) and remove non-manifold geometry.</li>
-      </ul>
-    </section>
-
-    <section id="models" aria-labelledby="models-h">
-      <h2 id="models-h">Custom 3D models</h2>
-      <p>Shock Diamonds lets you place a user-provided 3D model into the visualization.</p>
-      <ul class="list-tight">
-        <li><strong>How to import:</strong> Use the app’s “Import Model” flow (e.g., from Files). Follow on-screen prompts.</li>
-        <li><strong>Supported formats:</strong> See the in-app import screen for the authoritative list for your version.</li>
-        <li><strong>Tips for best results:</strong>
-          <ul>
-            <li>Keep polygon count reasonable for mobile GPUs.</li>
-            <li>Apply transforms and ensure scale is consistent.</li>
-            <li>Prefer a single, watertight mesh and embedded textures.</li>
-          </ul>
-        </li>
+        <li>We currently fully support <strong>USDZ</strong> files.</li>
+        <li>We also attempt to load other common 3D formats the best we can.</li>
+        <li>If something doesn’t look right, try a different model, or convert your model to <strong>USDZ</strong> and re-import.</li>
       </ul>
     </section>
 
     <section id="privacy" aria-labelledby="privacy-h">
       <h2 id="privacy-h">Privacy</h2>
       <p>This app does not collect personal data, does not create accounts, and does not include third-party analytics or advertising SDKs.</p>
-      <p>Crash information may be available via Apple’s systems if you’ve opted in to share diagnostics with developers in iOS settings. Such reports are used solely to improve stability.</p>
+      <p>Crash information may be available via Apple’s systems if you’ve opted in to share diagnostics with developers in system settings. Such reports are used solely to improve stability.</p>
       <p>If you email us for support, we will receive your email address and the content you send. We use it only to respond to your request. You can ask us to delete your messages at any time.</p>
+      <p><a href="/privacy.policy.html" rel="noopener">Read the full Privacy Policy</a></p>
     </section>
 
     <section id="about" aria-labelledby="about-h">
       <h2 id="about-h">About &amp; Versions</h2>
-      <p><span class="chip">App: Shock Diamonds</span> <span class="chip">Platform: iOS/iPadOS</span> <span class="chip version" id="version">Current version: see App Store</span></p>
+      <p><span class="chip">App: Shock Diamonds</span> <span class="chip">Platform: iOS / macOS</span> <span class="chip version" id="version">Current version: see App Store</span></p>
       <p class="muted">For exact OS/device requirements and the latest version number, please refer to the App Store listing.</p>
-      <div class="hr"></div>
-      <h3>Known issues</h3>
-      <ul class="list-tight">
-        <li>None listed at this time. We update this section as needed.</li>
-      </ul>
-      <h3>Changelog (high level)</h3>
-      <ul class="list-tight">
-        <li>• Initial release — core 3D Mach diamond visualization and custom model import.</li>
-      </ul>
     </section>
 
     <section id="legal" aria-labelledby="legal-h">
       <h2 id="legal-h">Legal</h2>
-      <p><strong>Educational use only.</strong> Shock Diamonds is intended for visualization and learning. It should not be used for engineering design, safety-critical decisions, or real-world predictions.</p>
-      <p>© <span id="year"></span> Qalti. “Shock Diamonds” and all related marks are property of their respective owners.</p>
+      <h3>End User License Agreement (EULA)</h3>
+      <p><strong>Summary:</strong> By using Shock Diamonds, you agree that you do so at your own risk. Shock Diamonds is provided “as is” for educational and visualization purposes only.</p>
+      <ul class="list-tight">
+        <li><strong>License.</strong> You are granted a personal, non-transferable, non-exclusive license to use the app on devices you own or control, subject to the App Store Terms.</li>
+        <li><strong>No professional use.</strong> The app is not intended for engineering design, safety-critical decisions, or real-world predictions.</li>
+        <li><strong>No warranty.</strong> To the maximum extent permitted by law, the app is provided without warranties of any kind, express or implied.</li>
+        <li><strong>Limitation of liability.</strong> To the maximum extent permitted by law, Viacheslav Gilevich (author) shall not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or any loss of data, profits, or revenues, arising from or related to your use of the app.</li>
+        <li><strong>User responsibility.</strong> You are responsible for using settings and outputs safely and appropriately.</li>
+        <li><strong>Support.</strong> Support is offered on a best-effort basis via the email above.</li>
+        <li><strong>Termination.</strong> We may modify or discontinue the app at any time without notice.</li>
+      </ul>
+      <p>© <span id="year"></span> Viacheslav Gilevich</p>
     </section>
 
     <footer>
@@ -221,7 +198,6 @@
   </div>
 
   <script>
-    // Populate dynamic fields
     const d = new Date(document.lastModified);
     const fmt = new Intl.DateTimeFormat(undefined, { year: 'numeric', month: 'short', day: '2-digit' });
     document.getElementById('updated').textContent = fmt.format(d);
